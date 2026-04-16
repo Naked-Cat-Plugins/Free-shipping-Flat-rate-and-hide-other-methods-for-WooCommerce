@@ -124,4 +124,20 @@ final class PTWooPlugins_FSHO {
 		}
 		return $this->methods_to_hide[ $zone_id ];
 	}
+
+	/**
+	 * Get shipping classes from package
+	 *
+	 * @param array $package The shipping package.
+	 * @return array
+	 */
+	public function find_shipping_classes_on_cart( $package ) {
+		$found_shipping_classes = array();
+		foreach ( $package['contents'] as $item_id => $values ) {
+			if ( $values['data']->needs_shipping() ) {
+				$found_shipping_classes[] = $values['data']->get_shipping_class();
+			}
+		}
+		return array_unique( $found_shipping_classes );
+	}
 }

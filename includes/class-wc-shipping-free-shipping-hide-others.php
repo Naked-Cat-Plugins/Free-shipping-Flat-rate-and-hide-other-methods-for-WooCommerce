@@ -202,22 +202,8 @@ class WC_Shipping_Free_Shipping_Hide_Others extends WC_Shipping_Free_Shipping {
 	}
 
 	/**
-	 * Get shipping classes from package
-	 *
-	 * @param array $package The shipping package.
-	 */
-	private function find_shipping_classes( $package ) {
-		$found_shipping_classes = array();
-		foreach ( $package['contents'] as $item_id => $values ) {
-			if ( $values['data']->needs_shipping() ) {
-				$found_shipping_classes[] = $values['data']->get_shipping_class();
-			}
-		}
-		return array_unique( $found_shipping_classes );
-	}
-
-	/**
 	 * Make it available or not depending on shipping classes
+	 * We cannot use is_available because the core WooCommerce Free Shipping method declares it.
 	 *
 	 * @param bool   $is_available If the method is available.
 	 * @param array  $package The shipping package.
@@ -226,7 +212,7 @@ class WC_Shipping_Free_Shipping_Hide_Others extends WC_Shipping_Free_Shipping {
 	public function is_available_shipping_class( $is_available, $package, $method ) {
 		if ( intval( $this->instance_id ) > 0 && $method->instance_id === $this->instance_id ) {
 			if ( $is_available && 'fsho_shipping_class' === $this->requires ) {
-				$shipping_classes_on_cart = $this->find_shipping_classes( $package );
+				$shipping_classes_on_cart = PTWooPlugins_FSHO()->find_shipping_classes_on_cart( $package );
 				if ( count( $shipping_classes_on_cart ) !== 1 || $shipping_classes_on_cart[0] !== $this->get_option( 'fso_shipping_class' ) ) {
 					return false;
 				}

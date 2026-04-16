@@ -129,7 +129,7 @@ class WC_Shipping_Flat_Rate_Hide_Others extends WC_Shipping_Flat_Rate {
 						'options' => $options,
 						'default' => '',
 					);
-					$new_fields['fso_min_amount'] = array(
+					$new_fields['fso_min_amount']     = array(
 						'title'             => __( 'Minimum order amount', 'free-shipping-hide-other-methods-woo' ),
 						'type'              => 'text',
 						'class'             => 'wc-shipping-modal-price',
@@ -224,33 +224,19 @@ class WC_Shipping_Flat_Rate_Hide_Others extends WC_Shipping_Flat_Rate {
 	}
 
 	/**
-	 * Get shipping classes from package
-	 *
-	 * @param array $package The shipping package.
-	 */
-	private function find_shipping_classes_on_cart( $package ) {
-		$found_shipping_classes = array();
-		foreach ( $package['contents'] as $item_id => $values ) {
-			if ( $values['data']->needs_shipping() ) {
-				$found_shipping_classes[] = $values['data']->get_shipping_class();
-			}
-		}
-		return array_unique( $found_shipping_classes );
-	}
-
-	/**
 	 * See if flat rate is available based on the package and cart.
+	 * We can user is_available because the core WooCommerce Flat Rate method does not declare it.
 	 *
 	 * @param array $package Shipping package.
 	 * @return bool
 	 */
 	public function is_available( $package ) {
-		// Default: ok
+		// By default, we are available, but we might need to check some conditions based on the "requires" setting
 		$is_available = true;
 		// Needs...
 		switch ( $this->requires ) {
 			case 'fsho_shipping_class':
-				$shipping_classes_on_cart = $this->find_shipping_classes_on_cart( $package );
+				$shipping_classes_on_cart = PTWooPlugins_FSHO()->find_shipping_classes_on_cart( $package );
 				if ( count( $shipping_classes_on_cart ) !== 1 || $shipping_classes_on_cart[0] !== $this->get_option( 'fso_shipping_class' ) ) {
 					return false;
 				}
