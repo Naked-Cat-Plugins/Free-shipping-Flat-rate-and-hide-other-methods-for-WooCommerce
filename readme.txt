@@ -13,12 +13,11 @@ Hide other WooCommerce shipping methods per zone when Free Shipping or Flat Rate
 
 == Description ==
 
-This plugin creates new “Free Shipping” and “Flat Rate” methods, extended from the ones on WooCommerce core, with the possibility of making unavailable any other shipping methods in the same zone when this one is available.
+Automatically hide WooCommerce shipping methods per zone when Free Shipping or Flat Rate becomes available. Built as drop-in replacements for the native WooCommerce methods, with full per-instance control so each zone behaves exactly as you need.
 
-This is set by instance, and not globally like on other plugins, so you can fine-tune which methods are hidden when one (or more) free shipping or flat rate options are active per zone.
+Unlike global plugins that hide methods site-wide, this plugin lets you choose, per shipping method instance, which methods get hidden when that Free Shipping or Flat Rate kicks in. Multiple instances per zone are fully supported.
 
-There’s also a new “All products are in the same shipping class” option on the “Free shipping requires...” field, to allow activation of this method only if all the products in the cart belong to a specific shipping class.
-On our “Flat Rate” method a “Flat rate requires...” field is added with the same option mentioned above.
+Both Free Shipping and Flat Rate include a “Flat/Free shipping requires... All products are in the same shipping class” option, letting you restrict activation to carts where every product belongs to a specific shipping class.
 
 Header photo by [Drew Beamer](https://unsplash.com/photos/0wsnJWonXFs).
 
@@ -27,6 +26,7 @@ Header photo by [Drew Beamer](https://unsplash.com/photos/0wsnJWonXFs).
 * Set a “Free Shipping” or a “Flat Rate” method
 * Choose which shipping methods, on the same zone, should be hidden when this one is active
 * Activate the method only if all the products in the cart belong to a specific shipping class
+* Activate the “Flat Rate” method only for a minimum order amount 
 
 = PRO add-on (soon to be released) features: =
 
@@ -72,8 +72,11 @@ Sure. Go to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/free
 
 == Changelog ==
 
-= 2.5 - 206-04-16 =
+= 3.0 - 206-04-16 =
+* [NEW] New “Flat Rate (hide other methods)” option: “Flat/Free shipping requires... A minimum order amount”
 * [NEW] Free plugin ownership transferred from [Marco Almeida | Webdados](https://profiles.wordpress.org/webdados/) to [Naked Cat Plugins](https://profiles.wordpress.org/nakedcatplugins/) on WordPress.org - No worries, we’re the same people :-)
+* [TWEAK] Refactor plugin descriptions
+* [DEV] Removed `load_plugin_textdomain` call as WordPress handles it
 * [DEV] Tested up to WordPress 7.0-RC2-62241 and WooCommerce 10.7.0
 
 = 2.4 - 2025-12-04 =
@@ -87,7 +90,7 @@ Sure. Go to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/free
 * [DEV] Tested up to WordPress 6.8 and WooCommerce 9.8.4
 
 = 2.2 - 2023-12-13 =
-* [FIX] Methods to hide on "rest of the world"
+* [FIX] Methods to hide on “Rest of the world”
 * [DEV] Small code refactoring
 * [DEV] Requires WordPress 5.8, WooCommerce 7.0 and PHP 7.2
 * [DEV] Tested up to WordPress 6.7 and WooCommerce 9.4.1

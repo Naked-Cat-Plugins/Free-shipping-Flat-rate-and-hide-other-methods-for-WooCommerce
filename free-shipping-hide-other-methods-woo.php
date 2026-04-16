@@ -23,14 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Localization
- */
-function free_shipping_hide_others_load_textdomain() {
-	load_plugin_textdomain( 'free-shipping-hide-other-methods-woo' );
-}
-add_action( 'plugins_loaded', 'free_shipping_hide_others_load_textdomain', 0 );
-
-/**
  * Init
  */
 function fsho_init() {
