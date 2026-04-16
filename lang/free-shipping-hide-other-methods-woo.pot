@@ -1,0 +1,104 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Free Shipping Hide Other Methods Woo\n"
+"POT-Creation-Date: 2025-05-09 15:33+0100\n"
+"PO-Revision-Date: 2020-09-23 16:07+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: free-shipping-hide-other-methods-woo.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: includes/class-wc-shipping-flat-rate-hide-others.php:49
+msgid "Flat rate (hide other methods)"
+msgstr ""
+
+#: includes/class-wc-shipping-flat-rate-hide-others.php:50
+msgid ""
+"Lets you charge a fixed rate for shipping and has the possibility to hide "
+"other shipping methods when active."
+msgstr ""
+
+#: includes/class-wc-shipping-flat-rate-hide-others.php:110
+msgid "Flat rate requires..."
+msgstr ""
+
+#: includes/class-wc-shipping-flat-rate-hide-others.php:115
+#: includes/class-wc-shipping-flat-rate-hide-others.php:121
+#: includes/class-wc-shipping-free-shipping-hide-others.php:100
+msgid "N/A"
+msgstr ""
+
+#: includes/class-wc-shipping-flat-rate-hide-others.php:116
+#: includes/class-wc-shipping-free-shipping-hide-others.php:97
+msgid "All products are in the same shipping class"
+msgstr ""
+
+#: includes/class-wc-shipping-flat-rate-hide-others.php:127
+#: includes/class-wc-shipping-free-shipping-hide-others.php:106
+msgid "Shipping class"
+msgstr ""
+
+#: includes/class-wc-shipping-flat-rate-hide-others.php:137
+#: includes/class-wc-shipping-free-shipping-hide-others.php:113
+msgid "Hide other methods"
+msgstr ""
+
+#: includes/class-wc-shipping-flat-rate-hide-others.php:139
+#: includes/class-wc-shipping-free-shipping-hide-others.php:115
+msgid "Select which other methods to hide when this method is available"
+msgstr ""
+
+#: includes/class-wc-shipping-flat-rate-hide-others.php:143
+#: includes/class-wc-shipping-free-shipping-hide-others.php:119
+msgid "Is this plugin useful?"
+msgstr ""
+
+#: includes/class-wc-shipping-flat-rate-hide-others.php:145
+#: includes/class-wc-shipping-free-shipping-hide-others.php:121
+msgid ""
+"Consider <a href=\"https://wordpress.org/support/plugin/free-shipping-hide-"
+"other-methods-woo/reviews/\" target=\"_blank\">leaving us a review</a> if "
+"you find this plugin useful"
+msgstr ""
+
+#: includes/class-wc-shipping-free-shipping-hide-others.php:42
+msgid "Free shipping (hide other methods)"
+msgstr ""
+
+#: includes/class-wc-shipping-free-shipping-hide-others.php:43
+msgid ""
+"Free shipping (hide other methods) is a special method which can be "
+"triggered with coupons and minimum spends and has the possibility to hide "
+"other shipping methods when active."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Free shipping + Flat rate and hide other methods for WooCommerce"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Alternative WooCommerce “Free Shipping” and “Flat Rate” methods that allows "
+"the shop owner to select and make unavailable any other shipping methods on "
+"the same zone when this one is available"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Naked Cat Plugins (by Webdados)"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://nakedcatplugins.com"
+msgstr ""
