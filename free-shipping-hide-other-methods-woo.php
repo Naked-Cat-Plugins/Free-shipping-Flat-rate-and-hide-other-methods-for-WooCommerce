@@ -3,7 +3,7 @@
  * Plugin Name:          Free shipping + Flat rate and hide other methods for WooCommerce
  * Plugin URI:
  * Description:          Hide other WooCommerce shipping methods per zone when Free Shipping or Flat Rate is active. Supports per-instance control and shipping class rules.
- * Version:              2.4
+ * Version:              3.0
  * Author:               Naked Cat Plugins (by Webdados)
  * Author URI:           https://nakedcatplugins.com
  * Text Domain:          free-shipping-hide-other-methods-woo

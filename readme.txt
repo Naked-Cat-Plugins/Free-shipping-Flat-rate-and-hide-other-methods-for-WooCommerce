@@ -5,7 +5,7 @@ Tags: woocommerce, shipping, free shipping, flat rate
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.2
-Stable tag: 2.4
+Stable tag: 3.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -73,7 +73,7 @@ Sure. Go to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/free
 
 == Changelog ==
 
-= 3.0 - 206-04-16 =
+= 3.0 - 2026-04-16 =
 * [NEW] New “Flat Rate (hide other methods)” option: “Flat/Free shipping requires... A minimum order amount”
 * [NEW] Restrict each shipping method to specific user roles, including guest users
 * [NEW] Free plugin ownership transferred from [Marco Almeida | Webdados](https://profiles.wordpress.org/webdados/) to [Naked Cat Plugins](https://profiles.wordpress.org/nakedcatplugins/) on WordPress.org - No worries, we’re the same people :-)
