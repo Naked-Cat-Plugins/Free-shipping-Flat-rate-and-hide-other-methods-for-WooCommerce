@@ -3,13 +3,13 @@ Contributors: nakedcatplugins, webdados
 Donate link: https://paypal-me/wonderm00n
 Tags: woocommerce, shipping, free shipping, flat rate
 Requires at least: 5.8
-Tested up to: 6.8
+Tested up to: 7.0
 Requires PHP: 7.2
 Stable tag: 2.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Alternative WooCommerce “Free Shipping” and “Flat Rate” methods that allows the shop owner to select and make unavailable any other shipping methods on the same zone when this one is available
+Hide other WooCommerce shipping methods per zone when Free Shipping or Flat Rate is active. Supports per-instance control and shipping class rules.
 
 == Description ==
 
@@ -72,33 +72,37 @@ Sure. Go to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/free
 
 == Changelog ==
 
+= 2.5 - 206-04-16 =
+* [NEW] Free plugin ownership transferred from [Marco Almeida | Webdados](https://profiles.wordpress.org/webdados/) to [Naked Cat Plugins](https://profiles.wordpress.org/nakedcatplugins/) on WordPress.org - No worries, we’re the same people :-)
+* [DEV] Tested up to WordPress 7.0-RC2-62241 and WooCommerce 10.7.0
+
 = 2.4 - 2025-12-04 =
 * [DEV] Stop using `wc_enqueue_js` which is deprecated from WooCommerce 10.4
 * [FIX] Fields not correctly hidden on the new WooCommerce admin interface
-* [DEV] Tested with WordPress 7.0-alpha-61349 and WooCommerce 10.4.0-beta.2
+* [DEV] Tested up to WordPress 7.0-alpha-61349 and WooCommerce 10.4.0-beta.2
 
 = 2.3 - 2025-05-09 =
 * [NEW] We are now called Naked Cat Plugins 😻
 * [DEV] Requires PHP 7.2, WordPress 5.8 and WooCommerce 7.1
-* [DEV] Tested with WordPress 6.8 and WooCommerce 9.8.4
+* [DEV] Tested up to WordPress 6.8 and WooCommerce 9.8.4
 
 = 2.2 - 2023-12-13 =
 * [FIX] Methods to hide on "rest of the world"
 * [DEV] Small code refactoring
 * [DEV] Requires WordPress 5.8, WooCommerce 7.0 and PHP 7.2
-* [DEV] Tested with WordPress 6.7 and WooCommerce 9.4.1
+* [DEV] Tested up to WordPress 6.7 and WooCommerce 9.4.1
 
 = 2.1 - 2023-12-13 =
 * Declare WooCommerce block-based Cart and Checkout compatibility
 * Fix jQuery deprecation notices
 * Requires WordPress 5.4
-* Tested with WordPress 6.5-alpha-57159 and WooCommerce 8.4.0
+* Tested up to WordPress 6.5-alpha-57159 and WooCommerce 8.4.0
 
 = 2.0 - 2023-10-16 =
 * Name change to “Free shipping + Flat rate and hide other methods for WooCommerce”
 * New “Flat Rate (hide other methods)” shipping method
 * Fix a bug when more than one instance of the same method are available on the same shipping zone
-* Tested with WordPress 6.4-beta2-56809 and WooCommerce 8.2.0
+* Tested up to WordPress 6.4-beta2-56809 and WooCommerce 8.2.0
 
 = 1.2 =
 * Remove the own shiping method from the list of methods to hide
@@ -106,21 +110,21 @@ Sure. Go to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/free
 = 1.1 - 2023-09-01 =
 * Performance improvement
 * Implement WordPress Coding Standards
-* Tested with WordPress 6.4-alpha-56479 and WooCommerce 6.8.0-beta.2
+* Tested up to WordPress 6.4-alpha-56479 and WooCommerce 6.8.0-beta.2
 
 = 1.0 - 2023-06-05 =
 * Fix php loop when adding this twice to the same zone
 * High-Performance Order Storage compatible (in beta and only on WooCommerce 7.1 and above)
 * Requires WooCommerce 5.0
-* Tested with WordPress 6.3-alpha-55859 and WooCommerce 6.8.0-beta.2
+* Tested up to WordPress 6.3-alpha-55859 and WooCommerce 6.8.0-beta.2
 
 = 0.5.0 - 2022-06-29 =
 * New brand: PT Woo Plugins 🥳
 * Requires WordPress 5.0, WooCommerce 3.0 and PHP 7.0
-* Tested with WordPress 6.1-alpha-53556 and WooCommerce 6.7.0-beta.2
+* Tested up to WordPress 6.1-alpha-53556 and WooCommerce 6.7.0-beta.2
 
 = 0.4.2 - 2021-03-11 =
-* Tested with WordPress 5.8-alpha-50516 and WooCommerce 5.1.0
+* Tested up to WordPress 5.8-alpha-50516 and WooCommerce 5.1.0
 
 = 0.4.1 =
 * Fix one string textdomain
@@ -137,4 +141,4 @@ Sure. Go to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/free
 
 = 0.1 =
 * Initial release (sponsored by [Planeta Tangerina](https://www.planetatangerina.com/))
-* Tested with WordPress 5.6-alpha-49035 and WooCommerce 4.6.0-beta.1
+* Tested up to WordPress 5.6-alpha-49035 and WooCommerce 4.6.0-beta.1
