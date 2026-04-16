@@ -101,6 +101,9 @@ class WC_Shipping_Flat_Rate_Hide_Others extends WC_Shipping_Flat_Rate {
 		if ( $this->instance_id > 0 ) {
 			$new_fields = array();
 			foreach ( $fields as $key => $field ) {
+				if ( $key === 'cost' ) {
+					$new_fields['fso_allowed_roles'] = PTWooPlugins_FSHO()->get_user_roles_field_definition();
+				}
 				$new_fields[ $key ] = $field;
 				if ( $key === 'tax_status' ) {
 					// Requires field, after tax status, similar to Free shipping but with just one option
@@ -217,6 +220,7 @@ class WC_Shipping_Flat_Rate_Hide_Others extends WC_Shipping_Flat_Rate {
 				$( document.body ).on( 'wc_backbone_modal_loaded', function( evt, target ) {
 					if ( 'wc-modal-shipping-method-settings' === target ) {
 						wcFlatRateHideOthersShowHideFields( $( '#wc-backbone-modal-dialog #woocommerce_flat_rate_hide_others_requires', evt.currentTarget ) );
+						$( document.body ).trigger( 'wc-enhanced-select-init' );
 					}
 				} );
 			} );"
@@ -234,6 +238,11 @@ class WC_Shipping_Flat_Rate_Hide_Others extends WC_Shipping_Flat_Rate {
 		// By default, we are available, but we might need to check some conditions based on the "requires" setting
 		$is_available = true;
 		// Needs...
+		// User roles.
+		$allowed_roles = $this->get_option( 'fso_allowed_roles', array() );
+		if ( ! PTWooPlugins_FSHO()->is_available_for_user_role( $allowed_roles ) ) {
+			return false;
+		}
 		switch ( $this->requires ) {
 			case 'fsho_shipping_class':
 				$shipping_classes_on_cart = PTWooPlugins_FSHO()->find_shipping_classes_on_cart( $package );

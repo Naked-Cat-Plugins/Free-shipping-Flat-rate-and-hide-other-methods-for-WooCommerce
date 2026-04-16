@@ -140,4 +140,46 @@ final class PTWooPlugins_FSHO {
 		}
 		return array_unique( $found_shipping_classes );
 	}
+
+	/**
+	 * Get the WC form field definition for the "Restrict to user roles" multiselect.
+	 * Shared by both shipping method classes.
+	 *
+	 * @return array
+	 */
+	public function get_user_roles_field_definition() {
+		$roles   = wp_roles()->get_names();
+		$options = array(
+			'fsho_guest' => __( 'Guest (non-logged-in)', 'free-shipping-hide-other-methods-woo' ),
+		);
+		foreach ( $roles as $role_value => $role_name ) {
+			$options[ $role_value ] = translate_user_role( $role_name );
+		}
+		return array(
+			'title'       => __( 'Restrict to user roles', 'free-shipping-hide-other-methods-woo' ),
+			'type'        => 'multiselect',
+			'class'       => 'wc-enhanced-select',
+			'options'     => $options,
+			'default'     => array(),
+			'description' => __( 'Only show this method to users with the selected roles. Leave blank to allow all roles.', 'free-shipping-hide-other-methods-woo' ),
+			'desc_tip'    => true,
+		);
+	}
+
+	/**
+	 * Check whether this shipping method should be available for the current user based on allowed roles.
+	 *
+	 * @param array $allowed_roles The roles allowed to see this method. Empty array means all roles are allowed.
+	 * @return bool
+	 */
+	public function is_available_for_user_role( $allowed_roles ) {
+		if ( empty( $allowed_roles ) ) {
+			return true;
+		}
+		if ( ! is_user_logged_in() ) {
+			return in_array( 'fsho_guest', $allowed_roles, true );
+		}
+		$real_roles = array_diff( $allowed_roles, array( 'fsho_guest' ) );
+		return count( array_intersect( $real_roles, wp_get_current_user()->roles ) ) > 0;
+	}
 }

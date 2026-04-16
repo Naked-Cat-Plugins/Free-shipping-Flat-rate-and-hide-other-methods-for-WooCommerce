@@ -18,7 +18,7 @@ Automatically hide WooCommerce shipping methods per zone when Free Shipping or F
 Unlike global plugins that hide methods site-wide, this plugin lets you choose, per shipping method instance, which methods get hidden when that Free Shipping or Flat Rate kicks in. Multiple instances per zone are fully supported.
 
 Both Free Shipping and Flat Rate include a “Flat/Free shipping requires... All products are in the same shipping class” option, letting you restrict activation to carts where every product belongs to a specific shipping class.
-
+You can also restrict each method instance to specific user roles — including guest (non-logged-in) users — so the method only appears to the audiences you choose.
 Header photo by [Drew Beamer](https://unsplash.com/photos/0wsnJWonXFs).
 
 = Features: =
@@ -26,7 +26,8 @@ Header photo by [Drew Beamer](https://unsplash.com/photos/0wsnJWonXFs).
 * Set a “Free Shipping” or a “Flat Rate” method
 * Choose which shipping methods, on the same zone, should be hidden when this one is active
 * Activate the method only if all the products in the cart belong to a specific shipping class
-* Activate the “Flat Rate” method only for a minimum order amount 
+* Activate the "Flat Rate" method only for a minimum order amount
+* Restrict any method instance to specific user roles, including guest (non-logged-in) users
 
 = PRO add-on (soon to be released) features: =
 
@@ -74,6 +75,7 @@ Sure. Go to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/free
 
 = 3.0 - 206-04-16 =
 * [NEW] New “Flat Rate (hide other methods)” option: “Flat/Free shipping requires... A minimum order amount”
+* [NEW] Restrict each shipping method to specific user roles, including guest users
 * [NEW] Free plugin ownership transferred from [Marco Almeida | Webdados](https://profiles.wordpress.org/webdados/) to [Naked Cat Plugins](https://profiles.wordpress.org/nakedcatplugins/) on WordPress.org - No worries, we’re the same people :-)
 * [TWEAK] Refactor plugin descriptions
 * [DEV] Removed `load_plugin_textdomain` call as WordPress handles it

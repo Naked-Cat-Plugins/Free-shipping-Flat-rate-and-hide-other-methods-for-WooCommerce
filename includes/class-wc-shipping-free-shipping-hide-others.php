@@ -61,6 +61,8 @@ class WC_Shipping_Free_Shipping_Hide_Others extends WC_Shipping_Free_Shipping {
 		add_action( 'admin_footer', array( 'WC_Shipping_Free_Shipping_Hide_Others', 'enqueue_admin_js' ), 10 ); // Priority needs to be higher than wc_print_js (25).
 		// Is available - Shipping classes
 		add_filter( 'woocommerce_shipping_' . $this->id . '_is_available', array( $this, 'is_available_shipping_class' ), 10, 3 );
+		// Is available - User roles
+		add_filter( 'woocommerce_shipping_' . $this->id . '_is_available', array( $this, 'is_available_user_role' ), 20, 3 );
 	}
 
 	/**
@@ -109,6 +111,7 @@ class WC_Shipping_Free_Shipping_Hide_Others extends WC_Shipping_Free_Shipping {
 				'options' => $options,
 				'default' => '',
 			);
+			$fields['fso_allowed_roles']  = PTWooPlugins_FSHO()->get_user_roles_field_definition();
 			$fields['fso_hide']           = array(
 				'title'       => __( 'Hide other methods', 'free-shipping-hide-other-methods-woo' ),
 				'type'        => 'title',
@@ -195,10 +198,30 @@ class WC_Shipping_Free_Shipping_Hide_Others extends WC_Shipping_Free_Shipping {
 				$( document.body ).on( 'wc_backbone_modal_loaded', function( evt, target ) {
 					if ( 'wc-modal-shipping-method-settings' === target ) {
 						wcFreeShippingHideOthersShowHideMinAmountField( $( '#wc-backbone-modal-dialog #woocommerce_free_shipping_hide_others_requires', evt.currentTarget ) );
+						$( document.body ).trigger( 'wc-enhanced-select-init' );
 					}
 				} );
 			} );"
 		);
+	}
+
+	/**
+	 * Make it available or not depending on user roles.
+	 *
+	 * @param bool   $is_available If the method is available.
+	 * @param array  $package The shipping package.
+	 * @param object $method The shipping method.
+	 */
+	public function is_available_user_role( $is_available, $package, $method ) {
+		if ( intval( $this->instance_id ) > 0 && $method->instance_id === $this->instance_id ) {
+			if ( $is_available ) {
+				$allowed_roles = $this->get_option( 'fso_allowed_roles', array() );
+				if ( ! PTWooPlugins_FSHO()->is_available_for_user_role( $allowed_roles ) ) {
+					return false;
+				}
+			}
+		}
+		return $is_available;
 	}
 
 	/**
