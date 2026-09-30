@@ -3,6 +3,8 @@
  * Class WC_Shipping_Flat_Rate_Hide_Others file.
  */
 
+use Automattic\WooCommerce\Utilities\NumberUtil;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -125,14 +127,14 @@ class WC_Shipping_Flat_Rate_Hide_Others extends WC_Shipping_Flat_Rate {
 					foreach ( $shipping_classes as $shipping_class ) {
 						$options[ $shipping_class->slug ] = $shipping_class->name;
 					}
-					$new_fields['fso_shipping_class'] = array(
+					$new_fields['fso_shipping_class']   = array(
 						'title'   => __( 'Shipping class', 'free-shipping-hide-other-methods-woo' ),
 						'type'    => 'select',
 						'class'   => 'wc-enhanced-select',
 						'options' => $options,
 						'default' => '',
 					);
-					$new_fields['fso_min_amount']     = array(
+					$new_fields['fso_min_amount']       = array(
 						'title'             => __( 'Minimum order amount', 'free-shipping-hide-other-methods-woo' ),
 						'type'              => 'text',
 						'class'             => 'wc-shipping-modal-price',
@@ -141,6 +143,14 @@ class WC_Shipping_Flat_Rate_Hide_Others extends WC_Shipping_Flat_Rate {
 						'default'           => '0',
 						'desc_tip'          => true,
 						'sanitize_callback' => array( $this, 'sanitize_cost' ),
+					);
+					$new_fields['fso_ignore_discounts'] = array(
+						'title'       => __( 'Coupons discounts', 'free-shipping-hide-other-methods-woo' ),
+						'label'       => __( 'Apply minimum order rule before coupon discount', 'free-shipping-hide-other-methods-woo' ),
+						'type'        => 'checkbox',
+						'description' => __( 'If checked, the flat rate would be available based on pre-discount order amount.', 'free-shipping-hide-other-methods-woo' ),
+						'default'     => 'yes', // Not the same as WooCommerce Free Shipping, so that existing instances keep working as before this option existed
+						'desc_tip'    => true,
 					);
 				}
 			}
@@ -189,22 +199,34 @@ class WC_Shipping_Flat_Rate_Hide_Others extends WC_Shipping_Flat_Rate {
 						var minAmountField      = $( '#woocommerce_flat_rate_hide_others_fso_min_amount', form ).closest( 'fieldset' );
 						var minAmountFieldLabel = $( 'label[for=woocommerce_flat_rate_hide_others_fso_min_amount]' );
 					}
+					var ignoreDiscountsField      = $( '#woocommerce_flat_rate_hide_others_fso_ignore_discounts', form ).closest( 'tr' );
+					var ignoreDiscountsFieldLabel = null;
+					if ( ignoreDiscountsField.length === 0 ) {
+						var ignoreDiscountsField      = $( '#woocommerce_flat_rate_hide_others_fso_ignore_discounts', form ).closest( 'fieldset' );
+						var ignoreDiscountsFieldLabel = $( 'label[for=woocommerce_flat_rate_hide_others_fso_ignore_discounts]' );
+					}
 					switch( $( el ).val() ) {
 						case '':
 							shippingClassField.hide();
 							shippingClassFieldLabel?.hide();
 							minAmountField.hide();
 							minAmountFieldLabel?.hide();
+							ignoreDiscountsField.hide();
+							ignoreDiscountsFieldLabel?.hide();
 							break;
 						case 'fsho_shipping_class':
 							shippingClassField.show();
 							shippingClassFieldLabel?.show();
 							minAmountField.hide();
 							minAmountFieldLabel?.hide();
+							ignoreDiscountsField.hide();
+							ignoreDiscountsFieldLabel?.hide();
 							break;
 						case 'fsho_min_amount':
 							minAmountField.show();
 							minAmountFieldLabel?.show();
+							ignoreDiscountsField.show();
+							ignoreDiscountsFieldLabel?.show();
 							shippingClassField.hide();
 							shippingClassFieldLabel?.hide();
 							break;
@@ -229,15 +251,14 @@ class WC_Shipping_Flat_Rate_Hide_Others extends WC_Shipping_Flat_Rate {
 
 	/**
 	 * See if flat rate is available based on the package and cart.
-	 * We can user is_available because the core WooCommerce Flat Rate method does not declare it.
+	 * We can use is_available because the core WooCommerce Flat Rate method does not declare it.
+	 * Our conditions are checked first, and then the parent handles the enabled check and applies the is_available filter.
 	 *
 	 * @param array $package Shipping package.
 	 * @return bool
 	 */
 	public function is_available( $package ) {
-		// By default, we are available, but we might need to check some conditions based on the "requires" setting
-		$is_available = true;
-		// Needs...
+		// We might not be available, depending on the user roles and the "requires" setting
 		// User roles.
 		$allowed_roles = $this->get_option( 'fso_allowed_roles', array() );
 		if ( ! PTWooPlugins_FSHO()->is_available_for_user_role( $allowed_roles ) ) {
@@ -251,13 +272,22 @@ class WC_Shipping_Flat_Rate_Hide_Others extends WC_Shipping_Flat_Rate {
 				}
 				break;
 			case 'fsho_min_amount':
+				// The same as WC_Shipping_Free_Shipping::is_available()
 				$total = WC()->cart->get_displayed_subtotal();
+				if ( 'no' === $this->get_option( 'fso_ignore_discounts' ) ) {
+					$total = $total - WC()->cart->get_discount_total();
+					if ( WC()->cart->display_prices_including_tax() ) {
+						$total = $total - WC()->cart->get_discount_tax();
+					}
+				}
+				$total = NumberUtil::round( $total, wc_get_price_decimals() );
 				if ( $total < $this->get_option( 'fso_min_amount' ) ) {
 					return false;
 				}
 				break;
 		}
-		return apply_filters( 'woocommerce_shipping_' . $this->id . '_is_available', $is_available, $package, $this );
+		// Enabled check and is_available filter
+		return parent::is_available( $package );
 	}
 
 	/**

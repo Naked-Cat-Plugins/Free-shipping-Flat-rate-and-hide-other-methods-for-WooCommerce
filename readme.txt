@@ -26,7 +26,7 @@ Header photo by [Drew Beamer](https://unsplash.com/photos/0wsnJWonXFs).
 * Set a “Free Shipping” or a “Flat Rate” method
 * Choose which shipping methods, on the same zone, should be hidden when this one is active
 * Activate the method only if all the products in the cart belong to a specific shipping class
-* Activate the "Flat Rate" method only for a minimum order amount
+* Activate the "Flat Rate" method only for a minimum order amount, before or after coupon discounts
 * Restrict any method instance to specific user roles, including guest (non-logged-in) users
 
 = PRO add-on (soon to be released) features: =
@@ -72,6 +72,9 @@ You can report any security bugs found in the source code of this plugin through
 Sure. Go to [GlotPress](https://translate.wordpress.org/projects/wp-plugins/free-shipping-hide-other-methods-woo) and help us out.
 
 == Changelog ==
+
+= TBA =
+* [NEW] The “Flat Rate (hide other methods)” minimum order amount can now be checked after coupon discounts, like WooCommerce free shipping, by unticking the new “Apply minimum order rule before coupon discount” option
 
 = 3.0 - 2026-04-16 =
 * [NEW] New “Flat Rate (hide other methods)” option: “Flat/Free shipping requires... A minimum order amount”
