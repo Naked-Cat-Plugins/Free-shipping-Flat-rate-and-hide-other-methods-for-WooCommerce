@@ -1,6 +1,6 @@
 === Free shipping + Flat rate and hide other methods for WooCommerce ===
 Contributors: nakedcatplugins, webdados
-Donate link: https://paypal-me/wonderm00n
+Donate link: https://www.paypal.me/Wonderm00n
 Tags: woocommerce, shipping, free shipping, flat rate
 Requires at least: 5.8
 Tested up to: 7.0
@@ -18,7 +18,8 @@ Automatically hide WooCommerce shipping methods per zone when Free Shipping or F
 Unlike global plugins that hide methods site-wide, this plugin lets you choose, per shipping method instance, which methods get hidden when that Free Shipping or Flat Rate kicks in. Multiple instances per zone are fully supported.
 
 Both Free Shipping and Flat Rate include a “Flat/Free shipping requires... All products are in the same shipping class” option, letting you restrict activation to carts where every product belongs to a specific shipping class.
-You can also restrict each method instance to specific user roles — including guest (non-logged-in) users — so the method only appears to the audiences you choose.
+You can also restrict each method instance to specific user roles, including guest (non-logged-in) users, so the method only appears to the audiences you choose.
+
 Header photo by [Drew Beamer](https://unsplash.com/photos/0wsnJWonXFs).
 
 = Features: =
@@ -31,7 +32,7 @@ Header photo by [Drew Beamer](https://unsplash.com/photos/0wsnJWonXFs).
 
 = PRO add-on (soon to be released) features: =
 
-* Tell us what would you like to see in a PRO add-on :-)
+* Tell us what you would like to see in a PRO add-on :-)
 * Technical support
 
 = Other (premium) plugins =
@@ -40,11 +41,11 @@ Already know our other WooCommerce (premium) plugins?
 
 * [EU Guarantee Notice and GARAN Label for WordPress and WooCommerce](https://nakedcatplugins.com/product/eu-guarantee-notice-and-garan-label-for-wordpress-and-woocommerce/) - Show the mandatory EU guarantee notice and the EU GARAN label with the official European Commission artwork, and let Proof of Notice check every day that the notice is still on your site
 * [Advanced Coupon Restrictions for WooCommerce](https://nakedcatplugins.com/product/advanced-coupon-restrictions-for-woocommerce/) - Create coupons for any Product Taxonomy, User details, and Order destination.
-* [Simple Custom Fields for WooCommerce Blocks Checkout](https://nakedcatplugins.com/product/simple-custom-fields-for-woocommerce-blocks-checkout/) - Add custom fields to the new WooCommerce Block-based Checkout
+* [Simple Checkout Fields Manager for WooCommerce](https://nakedcatplugins.com/product/simple-custom-fields-for-woocommerce-blocks-checkout/) - Add custom fields to the new WooCommerce Block-based Checkout
 * [Simple WooCommerce Order Approval](https://nakedcatplugins.com/product/simple-woocommerce-order-approval/) - The hassle-free solution for WooCommerce order approval before payment
 * [Shop as Client for WooCommerce](https://nakedcatplugins.com/product/shop-as-client-for-woocommerce-pro-add-on/) - Quickly create orders on behalf of your customers
-* [Taxonomy/Term and Role based Discounts for WooCommerce](https://nakedcatplugins.com/product/taxonomy-term-and-role-based-discounts-for-woocommerce-pro-add-on/) - Easily create bulk discount rules for products based on any taxonomy terms (built-in or custom)
-* [DPD / SEUR / Geopost Pickup and Lockers network for WooCommerce](https://nakedcatplugins.com/product/dpd-seur-geopost-pickup-and-lockers-network-for-woocommerce/) - Deliver your WooCommerce orders on the DPD and SEUR Pickup network of Parcelshops and Lockers in 21 European countries
+* [Taxonomy/Term and Role-based Discounts for WooCommerce](https://nakedcatplugins.com/product/taxonomy-term-and-role-based-discounts-for-woocommerce-pro-add-on/) - Easily create bulk discount rules for products based on any taxonomy terms (built-in or custom)
+* [DPD / Geopost Pickup and Lockers network for WooCommerce](https://nakedcatplugins.com/product/dpd-seur-geopost-pickup-and-lockers-network-for-woocommerce/) - Deliver your WooCommerce orders on the DPD, Chronopost, BRT, SEUR and PostNord Pickup network of Parcelshops and Lockers in 25 European countries
 
 == Frequently Asked Questions ==
 
